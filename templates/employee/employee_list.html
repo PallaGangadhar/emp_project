@@ -1,0 +1,69 @@
+{% extends 'employee/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Employee Profiles</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+{% block body_block %}
+
+<body>
+
+
+    <div style="margin-top:2%;">
+        <section class="courses_area p_120">
+            <div class="row courses_inner">
+                <div class="col-lg-9">
+                    <h2 style="color:brown;padding-left:15%;">Employee Infomation</h2><br />
+                    <table class="table table-striped" style="margin-left:15%;">
+                        <thead>
+                            <tr>
+                                <th>Profile</th>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>DOB</th>
+                                <th>Gender</th>
+                                <th>Email</th>
+                                <th>DOJ</th>
+                                <th>City</th>
+                                <th>Qualification</th>
+                                <th>Department</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if employees %}
+                            {% for emp in employees %}
+
+                            <tr>
+                                <td><img src="{{ MEDIA_URL }}/{{ emp.profile_image }}" width="120px" ,height="120px"></td>
+                                <td>{{ emp.first_name }}</td>
+                                <td>{{ emp.last_name }}</td>
+                                <td>{{ emp.date_of_birth }}</td>
+                                <td>{{ emp.gender }}</td>
+                                <td>{{ emp.email }}</td>
+                                <td>{{ emp.phone_no }}</td>
+                                <td>{{ emp.city }}</td>
+                                <td>{{ emp.qualification }}</td>
+                                <td>{{emp.dept}}</td>
+                            </tr>
+
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}

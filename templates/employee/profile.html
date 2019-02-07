@@ -1,0 +1,123 @@
+{% extends 'employee/base.html' %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+       
+{% load staticfiles %}
+
+<!-- Mirrored from thevectorlab.net/flatlab-4/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 02 Feb 2019 06:11:11 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.html">
+
+    <title>Profile</title>
+
+    
+
+  </head>
+ 
+  <body>
+    {% block body_block %}
+    {% if request.session.uname %}
+    <section class="home_banner_area">
+  <section id="container-fluid" class="">
+      <!--header start-->
+      <header class="header white-bg">
+        
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                    {% if emp %}
+                    {% for e in emp %}
+                  <aside class="profile-nav col-lg-3">  
+                      <section class="card">
+                          <div class="user-heading round">
+                                
+                              <a href="#">
+                                  <img src="{{ MEDIA_URL }}/{{ e.profile_image }}" alt="">
+                              </a>
+                              <h1>({{ e.first_name}} {{ e.last_name }})</h1>
+                              <p>{{ e.email }}</p>
+                              
+                              
+                          </div>
+                      </section>
+                  </aside>
+                  {% endfor %}
+                              {% endif %}
+                  <aside class="profile-info col-lg-9">
+                      
+                      <section class="card">
+                           <h1>User Profile</h1>
+                          <div class="card-body bio-graph-info">
+                             
+                              
+                              <div class="row">
+                                    {% if emp %}
+                                    {% for e in emp %}
+                                  <div class="bio-row">
+                                      <p><span>First Name </span>: {{ e.first_name }}</p>
+                                  </div>
+                                  
+                                  <div class="bio-row">
+                                      <p><span>Last Name </span>: {{ e.last_name }}</p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Date Of Birth </span>: {{ e.date_of_birth }}</p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Gender</span>:  {{ e.gender }}</p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Date Of Joining </span>:{{ e.date_of_joining }}</p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Email </span>: {{ e.email }}</p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Phone No. </span>: {{ e.phone_no }}</p>
+                                  </div>
+                                  <div class="bio-row">
+                                      <p><span>Address </span>: {{ e.address }}</p>
+                                  </div>
+                                  <div class="bio-row">
+                                        <p><span>City </span>: {{ e.city }}</p>
+                                    </div>
+                                    <div class="bio-row">
+                                            <p><span>Qualification </span>:{{ e.qualification }}</p>
+                                    </div>
+                                    <div class="bio-row">
+                                            <p><span>Designation </span>: {{ e.designation }}</p>
+                                    </div>
+                                    <div class="bio-row">
+                                            <p><span>Skills </span>: {{ e.skills }}</p>
+                                    </div>
+                                    <div class="bio-row">
+                                            <p><span>Experience </span>: {{ e.experience }}</p>
+                                    </div>
+                                    
+                                  {% endfor %}
+                                  {% endif %}
+                              </div>
+                          </div>
+                      </section>
+                     
+      </section>
+  </section>
+</section>
+    <!-- js placed at the end of the document so the pages load faster -->
+
+
+
+  </body>
+
+<!-- Mirrored from thevectorlab.net/flatlab-4/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 02 Feb 2019 06:11:11 GMT -->
+</html>
+{% endif %}
+{% endblock %}
