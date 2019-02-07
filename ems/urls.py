@@ -24,9 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('login/', views.login, name='login'),
-    path('home/', views.logout, name='logout'),
+    path('/', views.logout, name='logout'),
     path('departments/', views.departments, name='department_list'),
     path('employees/', views.employees, name='employees_list'),
+    
     path('assign_projects/', views.projects, name='projects'),
     path('profile/', views.profile, name='profile'),
     #path('leave_request/', views.leaves, name='leaves'),

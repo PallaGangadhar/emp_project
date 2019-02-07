@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from employee.models import department, employee, project, leave
-
+from django.db.models import Q 
+from django.contrib.auth.decorators import login_required
 def index(request):
     uname = request.session.get('uname')
     e2 = employee.objects.filter(email=uname)
@@ -25,9 +26,16 @@ def departments(request):
             dict1[d.dept_name] = c
     return render(request, 'employee/department_list.html', {'dict1': dict1})
 
+
+
 def employees(request):
-    employee_list = employee.objects.all()
-    context_dict = {'employees':employee_list}
+    if request.method == 'POST':
+        name = request.POST.get('search')
+        emp = employee.objects.filter(Q(first_name__contains=name) | Q(last_name__istartswith=name))
+        context_dict = {'employees':emp}
+    else:
+        employee_list = employee.objects.all()
+        context_dict = {'employees':employee_list}
     return render(request, 'employee/employee_list.html', context_dict)
 
 def login(request):
