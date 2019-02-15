@@ -5,51 +5,37 @@
 
 <head>
     <title>Employee Profiles</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/popup/magnific-popup.css' %}">
-    <!-- main css -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <script>
+    $(document).ready(function(){
+        console.log("hi")
+
+});
+    </script>
 </head>
 {% block body_block %}
 
 <body>
 
     {% if request.session.uname %}
-    <div style="margin-top:2%;">
-        <section class="courses_area p_120">
+   
+    
+    <section class="courses_area p_120">
+        <div class="container" >
             <div class="row courses_inner">
-                <div class="col-lg-9">
-                    <!-- <div class="topnav" style="color:brown;margin-left:15%;width: 1003px;">
-                        <h2>Employee Infomation</h2>
-                        <input type="text" placeholder="Search..">
-                    </div> -->
-                    <div class="topnav" style="color:brown;margin-left:15%;width: 1003px;">
-                          <h2>Employee Infomation </h2>
-                            <div class="search-container">
-                              <form action="{% url 'employees_list' %}" method="POST">
-                                    {% csrf_token %}
-                                <input type="text" placeholder="Search Employee" name="search">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                              </form>
-                            </div>
-                          </div>
-                          
-                </br>
-                    <table class="table table-striped" style="margin-left:15%;">
+                <div class="col-lg-12">
+                    <div class="topnav" style="color:brown;">
+                        <h2 style="color:gray;">Employee Infomation </h2>
+                        <div class="search-container">
+                            <form action="{% url 'employees_list' %}" method="POST">
+                                {% csrf_token %}
+                            <input type="text" placeholder="Search Employee" name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-striped" style="margin-top:2%;">
                         <thead>
                             <tr>
                                 <th>Profile</th>
@@ -62,14 +48,18 @@
                                 <th>City</th>
                                 <th>Qualification</th>
                                 <th>Department</th>
+                                <th colspan="2">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% if employees %}
                             {% for emp in employees %}
-
+                           
+                            
                             <tr>
-                                <td><img src="{{ MEDIA_URL }}/{{ emp.profile_image }}" width="120px" ,height="120px"></td>
+                                    {% if request.session.dept == emp.dept_id %}
+                                    {% if emp.role == 'Employee' %}
+                                <td><img src="{{ MEDIA_URL }}/{{ emp.profile_image }}" width="50px" height="50px" style="border-radius:50%;"></td>
                                 <td>{{ emp.first_name }}</td>
                                 <td>{{ emp.last_name }}</td>
                                 <td>{{ emp.date_of_birth }}</td>
@@ -79,16 +69,41 @@
                                 <td>{{ emp.city }}</td>
                                 <td>{{ emp.qualification }}</td>
                                 <td>{{emp.dept}}</td>
-                            </tr>
+                            
+                                {% if request.session.role == 'Manager' %}
+                                {% if request.session.dept == emp.dept_id %}
+                                <td><a href="{% url 'edit' emp.id %}"><i class="fa fa-edit"></i></a></td>
+                                <td> <a href="{% url 'delete' emp.id %}"><i class="fa fa-trash"></i></a></td>
 
+                                {% endif %}
+                                {% endif %}
+                              
+                                {% endif %}
+                                {% else %}
+                                {% if emp.role == 'Employee' %}
+                                <td><img src="{{ MEDIA_URL }}/{{ emp.profile_image }}" width="50px" height="50px" style="border-radius:50%;"></td>
+                                <td>{{ emp.first_name }}</td>
+                                <td>{{ emp.last_name }}</td>
+                                <td>{{ emp.date_of_birth }}</td>
+                                <td>{{ emp.gender }}</td>
+                                <td>{{ emp.email }}</td>
+                                <td>{{ emp.phone_no }}</td>
+                                <td>{{ emp.city }}</td>
+                                <td>{{ emp.qualification }}</td>
+                                <td>{{emp.dept}}</td>
+                                {% endif %}
+                            </tr>
+                           
+                            {% endif %}
                             {% endfor %}
                             {% endif %}
                         </tbody>
                     </table>
                 </div>
             </div>
-        </section>
+        
     </div>
+    </section>
     
 {% endif %}
 </body>

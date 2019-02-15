@@ -1,0 +1,188 @@
+{% extends 'employee/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+{% if request.session.uname %}
+
+<head>
+    <script>
+        function mydate() {
+            d = new Date(document.getElementById("ndt").value);
+            dt = d.getDate();
+            mn = d.getMonth();
+
+            yy = d.getFullYear();
+            document.getElementById("ndt").value = yy + "/" + mn + "/" + dt
+
+        }
+    </script>
+</head>
+<div style="margin-top:2%;">
+    <section class="courses_area p_120">
+        <div class="row courses_inner">
+
+
+            <div class="container">
+                <h2 style="margin-left: 1.5%;">Add Employee</h2>
+
+                <form action="" method="POST" enctype="multipart/form-data" autocomplete="on">
+                    {% csrf_token %}
+                    <div class="form-group" style="display: inline-block;">
+                        <div class="col-sm-4">
+                            <label>Department</label>
+                            <select class="" name="dept" >
+                                {% for d in dept %}
+                                
+                                <option value="{{ d.id }}">{{ d.dept_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label>First Name:</label>
+                            <input type="text" class="form-control" value="" name="fname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label>Last Name:</label>
+                            <input type="text" class="form-control" value="" name="lname">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label>DOB:</label>
+                            <p><input type="text" id="datepicker" class="form-control" placeholder="Select Date" name="dob"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Gender:</label>
+                            <input type="radio" value="M" name="gender" style="margin-left:15px;" checked>&nbsp;&nbsp;Male
+                            <input type="radio" value="F" name="gender" style="margin-left:15px;">&nbsp;&nbsp;Female
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Phone No:</label>
+                            <input type="text" class="form-control"  value="" name="phone_no">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Email:</label>
+                            <input type="email" class="form-control" value="" name="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" value="" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Address:</label>
+                            <input type="text" class="form-control" value="" name="address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">City:</label>
+                            <input type="text" class="form-control" value="" name="city">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Qualification:</label>
+                            <input type="text" class="form-control" value="" name="qualification">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label>DOJ:</label>
+                            <p><input type="text" id="datepicker1" class="form-control" placeholder="Select Date" name="doj"></p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Designation:</label>
+                            <input type="text" class="form-control" value="" name="designation">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Skills:</label>
+                            <input type="text" class="form-control" value="" name="skills">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Experience:</label>
+                            <input type="text" class="form-control" value="" name="experience">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Profile Image:</label>
+                            <input type="file" class="form-control" value="" name="profile_image">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <label for="pwd">Salary:</label>
+                            <input type="text" class="form-control" value="" name="salary">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+
+                            <input type="hidden" class="form-control" value="" name="role">
+                        </div>
+                    </div>
+
+                    <input type="submit" class="btn btn-default" value="Submit" style="margin-left:1.5%;">
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+</div>
+<script>
+
+
+    $("#datepicker").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-30:-00",
+        dateFormat: 'yy-mm-dd',
+        // set the minDate to the today's date
+        // you can add other options here
+    });
+    $("#datepicker1").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-30:-00",
+        dateFormat: 'yy-mm-dd',
+        // set the minDate to the today's date
+        // you can add other options here
+    });
+
+
+</script>
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+    $(function () {
+        $("#datepicker1").datepicker();
+    });
+</script>
+{% endif %}
+
+{% endblock %}

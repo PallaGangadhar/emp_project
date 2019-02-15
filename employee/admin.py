@@ -9,7 +9,8 @@ class project_list(admin.ModelAdmin):
     list_display = ('project_name','emp','dept','project_technology','project_start_date','project_end_date')
     
 class leave_request(admin.ModelAdmin):
-    list_display = ('dept', 'emp', 'leave_reason', 'leave_time', 'leave_date')
+    list_display = ('dept', 'emp', 'leave_reason', 'leave_time', 'leave_date','leave_status')
+    change_list_template = "admin/manage_list.html"
     
 admin.site.register(department)
 admin.site.register(employee, employee_list)

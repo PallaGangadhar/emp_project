@@ -1,0 +1,90 @@
+{% extends 'employee/base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Employee Profiles</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/popup/magnific-popup.css' %}">
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+{% block body_block %}
+
+<body>
+
+    {% if request.session.uname %}
+    
+        <section class="courses_area p_120">
+            <div class="row courses_inner">
+                <div class="col-lg-9">
+                   
+                   
+                    <div class="topnav" style="color:brown;margin-left:15%;width: 1015px;">
+                        <h2 style="color: grey;">Project Infomation </h2>
+                        <div class="search-container">
+                            <form action="{% url 'all_projects' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="text" placeholder="Search Employee" name="search">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    </br>
+                    <table class="table table-striped employee-edit" style="margin-left:15%;">
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Employee</th>
+                                <th>Project</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Technology</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if projects %}
+                            {% for project in projects %}
+                            {% if request.session.dept == project.dept_id %}
+                           
+                            <tr>
+                                <td>{{ project.dept }}</td>
+                                <td>{{ project.emp }}</td>
+                                <td>{{ project.project_name }}</td>
+                                <td>{{ project.project_start_date }}</td>
+                                <td>{{ project.project_end_date }}</td>
+                                <td>{{ project.project_technology }}</td>
+                            </tr>
+                            
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% endif %}
+   
+</body>
+
+</html>
+{% endblock %}

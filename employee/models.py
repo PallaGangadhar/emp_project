@@ -3,6 +3,12 @@ from django.utils.safestring import mark_safe
 from django.contrib.auth.models import User
 # Create your models here.
 from django.core.exceptions import ValidationError
+USER_TYPE_CHOICES = (
+    ('Employee', 'Employee'),
+    ('Manager', 'Manager'),
+)
+
+
 
 
 class department(models.Model):
@@ -19,14 +25,16 @@ class employee(models.Model):
         ('M', 'Male'),
         ('F', 'Female')
     )
+    
     dept = models.ForeignKey(department, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=128, blank=False)
-    last_name = models.CharField(max_length=128, blank=False)
-    date_of_birth = models.DateField(max_length=128, blank=False)
+    first_name = models.CharField(max_length=128, blank=False, default='')
+    last_name = models.CharField(max_length=128, blank=False, default='')
+    date_of_birth = models.DateField( blank=True, null=True)
     gender = models.CharField(choices=GENDER_CHOICES, max_length=128)
-    date_of_joining = models.DateField(blank=False)
-    email = models.EmailField(max_length=128, blank=False, unique=True)
-    password = models.CharField(max_length=50, blank=False)
+    role = models.CharField(choices=USER_TYPE_CHOICES, max_length=128, default='Employee')
+    date_of_joining = models.DateField(blank=True, null=True)
+    email = models.EmailField(max_length=128, blank=False, unique=True, default='')
+    password = models.CharField(max_length=50, blank=False, default='',unique=True)
     phone_no = models.CharField(max_length=128, unique=True)
     address = models.CharField(max_length=128, blank=False)
     city = models.CharField(max_length=128, blank=False)
@@ -44,13 +52,14 @@ class employee(models.Model):
 
     class Meta:
         verbose_name_plural = 'Employee'
-
+        
 class leave(models.Model):
     dept = models.ForeignKey(department, on_delete=models.CASCADE)
     emp = models.ForeignKey(employee, on_delete=models.CASCADE)
     leave_reason = models.CharField(max_length=128,blank=False)
     leave_date = models.DateField(default=0,blank=True)
     leave_time = models.CharField(max_length=128,default=0)
+    leave_status = models.CharField(max_length=128,default=0)
     class Meta:
         verbose_name_plural = 'Leave'
 

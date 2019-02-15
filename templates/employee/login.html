@@ -1,4 +1,12 @@
-
+{% if request.session.uname %}
+<html>
+	<head>
+		<script>
+			window.location.replace("/") 
+			</script>
+	</head>
+</html>
+{% else %}
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -22,15 +30,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //web font -->
 </head>
 <body>
+
 	<!-- main -->
 	<div class="agileits-main"> 
-	
 		<div class="header-main">
 		<h2>Login Now</h2>
 			<div class="header-bottom">
 				<div class="header-right w3agile">
 					<div class="header-left-bottom agileinfo">
-						<form action="" method="post">
+						<form action="{% url 'login' %}" method="post">
 							{% csrf_token %}
 							<div class="icon1">
 								<input type="text" placeholder="Email@example.com" required="" name="email" />
@@ -47,8 +55,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 				</div>
 			</div>
+			
 	</div>
 
 	</div>	
+	
 </body>
 </html>
+{% endif %}

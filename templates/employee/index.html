@@ -6,303 +6,37 @@
 
 <!--================Home Banner Area =================-->
 {% block body_block %}
-<section class="home_banner_area" style="margin-top: 22px;">
-		<div class="banner_inner d-flex align-items-center">
-			<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
-			<div class="container">
-				<div class="banner_content text-center">
-					<h3>We Ensure better education <br />for a better world</h3>
-					<p>In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space telescope known as the Hubble.</p>
-					<a class="main_btn" href="{% url 'login' %}">Log In</a>
-				</div>
-			</div>
-		</div>
-	</section>
+<style>
+	.images {
+		height: 170px;
+		width: 400px;
+		margin-top: 3%;
+	}
+</style>
+
+
 <!--================End Home Banner Area =================-->
 
-<!--================Finance Area =================-->
+<!--================Count =================-->
 
-<!--================End Finance Area =================-->
+
+<!--================End Count =================-->
 
 <!--================Courses Area =================-->
-<section class="courses_area p_120">
-	<div class="container">
-		<div class="main_title">
-			<h2>Our Technologies</h2>
-			<!-- <p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-				exciting to think about setting up your own viewing station.</p> -->
-		</div>
-		<div class="row courses_inner">
-			<div class="col-lg-9">
-				<div class="grid_inner">
-					<div class="container">
-						<div class="row">
-							<div class="col-sm-3" style="padding-left: 70px;">
-								<img src="{% static 'img/images/p1.png' %}" alt="" style="height: 230px;width: 230px;">
-							</div>
-							<div class="col-sm-3" style="padding-left: 110px;">
-								<img src="{% static 'img/images/j.png' %}" alt="" style="height: 230px;width: 230px;">
-							</div>
-							<div class="col-sm-3" style="padding-left: 150px;">
-								<img src="{% static 'img/images/asp.jpeg' %}" alt="" style="height: 230px;width: 230px;">
-							</div>
-							<div class="col-sm-3" style="padding-left: 190px;">
-								<img src="{% static 'img/images/php.png' %}" alt="" style="height: 230px;width: 230px;">
-							</div>
-						</div>
-						</br>
-						</br>
-						</br>
-						<div class="row">
-							<div class="col-sm-3" style="padding-left: 70px;">
-								<img src="{% static 'img/images/node.png' %}" alt="" style="height: 230px;width: 230px;">
-							</div>
-							<div class="col-sm-3" style="padding-left: 110px;">
-								<img src="{% static 'img/images/react.png' %}" alt="" style="height: 230px;width: 230px;">
-							</div>
-							<div class="col-sm-3" style="padding-left: 150px;">
-								<img src="{% static 'img/images/c#.jpeg' %}" alt="" style="height: 230px;width: 230px;">
-							</div>
-							<div class="col-sm-3" style="padding-left: 190px;">
-								<img src="{% static 'img/images/ruby.png' %}" alt="" style="height: 230px;width: 230px;">
-							</div>
-						</div>
-					</div>
 
-				</div>
-			</div>
-		</div>
-</section>
 <!--================End Courses Area =================-->
 
 <!--================Team Area =================-->
-<section class="team_area p_120">
-	<div class="container">
-		<div class="main_title">
-			<h2>Our Employees</h2>
-			<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s
-				exciting to think about setting up your own viewing station.</p>
-		</div>
-		{% if request.session.uname %}
-		{% if emp1 %}
 
-		{% for e in emp1 %}
-		<div class="row team_inner">
-			<div class="col-lg-3 col-sm-6">
-				<div class="team_item">
-					<div class="team_img">
-						<img  src="{{ MEDIA_URL }}/profile_images/prashant.jpg" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
-						<div class="hover">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-linkedin"></i></a>
-						</div>
-					</div>
-					<div class="team_name">
-						<h4>Prashant Sonar</h4>
-						<p>Software Engineer (Python)</p>
-					</div>
-				</div>
-				
-			</div>
-			<div class="col-lg-3 col-sm-6">
-				<div class="team_item">
-					<div class="team_img">
-							<img  src="{{ MEDIA_URL }}/profile_images/ems.jpg" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
-						<div class="hover">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-linkedin"></i></a>
-						</div>
-					</div>
-					<div class="team_name">
-						<h4>Gangadhar Palla</h4>
-						<p>Software Engineer (Python)</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6">
-				<div class="team_item">
-					<div class="team_img">
-							<img  src="{{ MEDIA_URL }}/profile_images/bike.jpg" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
-						<div class="hover">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-linkedin"></i></a>
-						</div>
-					</div>
-					<div class="team_name">
-						<h4>Ram Palla</h4>
-						<p>Software Engineer (PHP)</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-sm-6">
-				<div class="team_item">
-					<div class="team_img">
-							<img  src="{{ MEDIA_URL }}/profile_images/yogi.jpg" alt="" style="width: 250px;height: 250px;border-radius: 50%;">
-						<div class="hover">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-linkedin"></i></a>
-						</div>
-					</div>
-					<div class="team_name">
-						<h4>Yogendra Sharma</h4>
-						<p>Software Engineer (PHP)</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		{% endfor %}
-		{% endif %}
-		{% endif %}
-	</div>
-</section>
+
+
+
 <!--================End Team Area =================-->
 
 <!--================Testimonials Area =================-->
-<section class="testimonials_area p_120">
-	<div class="container">
-		<div class="testi_slider owl-carousel">
-			<div class="item">
-				<div class="testi_item">
-						<img  src="{{ MEDIA_URL }}/profile_images/prashant.jpg" alt="" style="width: 100px;height: 100px;border-radius: 50%;">
-					<h4>Prashant Sonar</h4>
-					<ul class="list">
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-					</ul>
-					<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
-						Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
-				</div>
-			</div>
-			<div class="item">
-				<div class="testi_item">
-						<img  src="{{ MEDIA_URL }}/profile_images/ems.jpg" alt="" style="width: 100px;height: 100px;border-radius: 50%;">
-					<h4>Gangadhar Palla</h4>
-					<ul class="list">
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-					</ul>
-					<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
-						Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
-				</div>
-			</div>
-			<div class="item">
-				<div class="testi_item">
-						<img  src="{{ MEDIA_URL }}/profile_images/bike.jpg" alt="" style="width: 100px;height: 100px;border-radius: 50%;">
-					<h4>Ram Palla</h4>
-					<ul class="list">
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-						<li><a href="#"><i class="fa fa-star"></i></a></li>
-					</ul>
-					<p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.
-						Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+
 <!--================End Testimonials Area =================-->
 
-
-
-
-
 <!--================ start footer Area  =================-->
-<footer class="footer-area p_120">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-2  col-md-6 col-sm-6">
-				<div class="single-footer-widget tp_widgets">
-					<h6 class="footer_title">Top Products</h6>
-					<ul class="list">
-						<li><a href="#">Managed Website</a></li>
-						<li><a href="#">Manage Reputation</a></li>
-						<li><a href="#">Power Tools</a></li>
-						<li><a href="#">Marketing Service</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-2  col-md-6 col-sm-6">
-				<div class="single-footer-widget tp_widgets">
-					<h6 class="footer_title">Quick Links</h6>
-					<ul class="list">
-						<li><a href="#">Jobs</a></li>
-						<li><a href="#">Brand Assets</a></li>
-						<li><a href="#">Investor Relations</a></li>
-						<li><a href="#">Terms of Service</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-2  col-md-6 col-sm-6">
-				<div class="single-footer-widget tp_widgets">
-					<h6 class="footer_title">Features</h6>
-					<ul class="list">
-						<li><a href="#">Jobs</a></li>
-						<li><a href="#">Brand Assets</a></li>
-						<li><a href="#">Investor Relations</a></li>
-						<li><a href="#">Terms of Service</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-2  col-md-6 col-sm-6">
-				<div class="single-footer-widget tp_widgets">
-					<h6 class="footer_title">Resources</h6>
-					<ul class="list">
-						<li><a href="#">Guides</a></li>
-						<li><a href="#">Research</a></li>
-						<li><a href="#">Experts</a></li>
-						<li><a href="#">Agencies</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<aside class="f_widget news_widget">
-					<div class="f_title">
-						<h3 class="footer_title">Newsletter</h3>
-					</div>
-					<p>Stay updated with our latest trends</p>
-					<div id="mc_embed_signup">
-						<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-						 method="get" class="subscribe_form relative">
-							<div class="input-group d-flex flex-row">
-								<input name="EMAIL" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '"
-								 required="" type="email">
-								<button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>
-							</div>
-							<div class="mt-10 info"></div>
-						</form>
-					</div>
-				</aside>
-			</div>
-		</div>
-		<div class="row footer-bottom d-flex justify-content-between align-items-center">
-			<p class="col-lg-8 col-md-8 footer-text m-0">
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				Copyright &copy;
-				<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
-				 class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			</p>
-			<div class="col-lg-4 col-md-4 footer-social">
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-dribbble"></i></a>
-				<a href="#"><i class="fa fa-behance"></i></a>
-			</div>
-		</div>
-	</div>
-</footer>
 {% endblock %}
 <!--================ End footer Area  =================-->
